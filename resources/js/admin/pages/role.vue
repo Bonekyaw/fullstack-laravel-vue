@@ -5,7 +5,8 @@
 				
 				<!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
 				<div class="_1adminOverveiw_table_recent _box_shadow _border_radious _mar_b30 _p20">
-					<p class="_title0">Role Manangement <Button @click="addModal=true"><Icon type="md-add" /> Add a new role</Button></p>
+					<p class="_title0">Role Manangement <Button @click="addModal=true">
+                        <Icon type="md-add" /> Add a new role</Button></p>
 
 					<div class="_overflow _table_div">
 						<table class="_table">
@@ -18,22 +19,22 @@
 							</tr>
 								<!-- TABLE TITLE -->
 
-
 								<!-- ITEMS -->
 							<tr v-for="(role, i) in roles" :key="i" v-if="roles.length">
 								<td>{{role.id}}</td>
 								<td class="_table_name">{{role.roleName}}</td>
 								<td>{{role.created_at}}</td>
 								<td>
-									<Button type="info" size="small" @click="showEditModal(role, i)">Edit</Button>
-									<Button type="error" size="small" @click="showDeletingModal(role, i)"  :loading="role.isDeleting">Delete</Button>
+									<Button type="info" size="small" @click="showEditModal(role, i)">
+                                        Edit</Button>
+									<Button type="error" size="small" @click="showDeletingModal(role, i)"  
+                                        :loading="role.isDeleting">Delete</Button>
 								</td>
 							</tr>
 								<!-- ITEMS -->
 					</table>
 					</div>
 				</div>
-
 
 				<!-- tag adding modal -->
 				<Modal
@@ -47,7 +48,8 @@
 
 					<div slot="footer">
 						<Button type="default" @click="addModal=false">Close</Button>
-						<Button type="primary" @click="add" :disabled="isAdding" :loading="isAdding">{{isAdding ? 'Adding..' : 'Add Role'}}</Button>
+						<Button type="primary" @click="add" :disabled="isAdding" 
+                            :loading="isAdding">{{isAdding ? 'Adding..' : 'Add Role'}}</Button>
 					</div>
 
 				</Modal>
@@ -63,7 +65,8 @@
 
 					<div slot="footer">
 						<Button type="default" @click="editModal=false">Close</Button>
-						<Button type="primary" @click="edit" :disabled="isAdding" :loading="isAdding">{{isAdding ? 'Editing..' : 'Edit Role'}}</Button>
+						<Button type="primary" @click="edit" :disabled="isAdding" 
+                            :loading="isAdding">{{isAdding ? 'Editing..' : 'Edit Role'}}</Button>
 					</div>
 
 				</Modal>
@@ -78,7 +81,8 @@
 						
 					</div>
 					<div slot="footer">
-						<Button type="error" size="large" long :loading="isDeleing" :disabled="isDeleing" @click="deleteTag" >Delete</Button>
+						<Button type="error" size="large" long :loading="isDeleing" 
+                            :disabled="isDeleing" @click="deleteTag" >Delete</Button>
 					</div>
 				</Modal> -->
 				<deleteModal></deleteModal>
@@ -132,10 +136,8 @@ export default {
 					
 				}else{
 					this.swr()
-				}
-				
+				}				
 			}
-
 		},
 		async edit(){
 			if(this.editData.roleName.trim()=='') return this.e('Tag name is required')
@@ -149,14 +151,11 @@ export default {
 				if(res.status==422){
 					if(res.data.errors.roleName){
 						this.e(res.data.errors.roleName[0])
-					}
-					
+					}					
 				}else{
 					this.swr()
-				}
-				
+				}				
 			}
-
 		},
 		showEditModal(role, index){
 			let obj = {
@@ -217,10 +216,6 @@ export default {
 				this.tags.splice(obj.deletingIndex,1)
 			}
 		}
-	}
-	
-
-
-	
+	}	
 }
 </script>
