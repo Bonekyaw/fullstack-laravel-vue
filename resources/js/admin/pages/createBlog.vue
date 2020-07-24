@@ -38,10 +38,10 @@
 					<div class="_input_field">
 						 <Input  type="textarea" v-model="data.metaDescription" :rows="4" placeholder="Meta description" />
 					 </div>
-
-
 					 <div class="_input_field">
-						 <Button @click="save" :loading="isCreating" :disabled="isCreating">{{isCreating ? 'Please wait...' : 'Create blog'}}</Button>
+						 <Button @click="save" :loading="isCreating" :disabled="isCreating">
+                                {{isCreating ? 'Please wait...' : 'Create blog'}}
+                         </Button>
 					 </div>
 				</div>
 			</div>
