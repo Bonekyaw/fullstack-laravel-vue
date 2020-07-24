@@ -12,13 +12,13 @@
                         <Input type="password" v-model="data.password"  placeholder="******"  />
                     </div>
                     <div class="login_footer">
-                        <Button type="primary" @click="login" :disabled="isLogging" :loading="isLogging">{{isLogging ? 'Loging...' : 'Login'}}</Button>
+                        <Button type="primary" @click="login" :disabled="isLogging" :loading="isLogging">
+                                {{isLogging ? 'Loging...' : 'Login'}}</Button>
                     </div>
             </div>
         </div>
     </div>
 </template>
-
 
 <script>
 export default {
@@ -59,11 +59,6 @@ export default {
     }
 }
 </script>
-
-
-
-
-
 
 <style scoped>
     ._1adminOverveiw_table_recent {
