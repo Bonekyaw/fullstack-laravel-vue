@@ -21,7 +21,6 @@
 								:config="config"
 							/>
 
-
 					</div>
 					<div class="_input_field">
 						 <Input  type="textarea" v-model="data.post_excerpt" :rows="4" placeholder="Post excerpt " />
@@ -44,13 +43,7 @@
 					 <div class="_input_field">
 						 <Button @click="save" :loading="isCreating" :disabled="isCreating">{{isCreating ? 'Please wait...' : 'Create blog'}}</Button>
 					 </div>
-
 				</div>
-
-
-
-
-
 			</div>
 		</div>
     </div>
@@ -80,15 +73,10 @@ export default {
 			category : [],
 			tag : [],
 			isCreating: false,
-
-
 		}
 	},
 
 	methods : {
-
-
-
         async onSave(response){
             var data = response
 			await this.outputHtml(data.blocks)
@@ -115,7 +103,6 @@ export default {
                 }else{
                     this.swr()
                 }
-
 			}
 			this.isCreating = false
         },
@@ -161,8 +148,6 @@ export default {
 				case "embed":
 					this.articleHTML += this.makeEmbed(obj)
 					break;
-
-
 				case 'delimeter':
 					this.articleHTML += this.makeDelimeter(obj);
 					break;
@@ -183,18 +168,9 @@ export default {
 		}else{
 			this.swr()
 		}
-
 	}
-
-
-
-
-
-
-
 }
 </script>
-
 
 <style>
 	.blog_editor {
@@ -212,7 +188,6 @@ export default {
 	.blog_editor:hover {
 		border: 1px solid #57a3f3;
 	}
-
 	._input_field{
 		margin: 20px 0 20px 160px;
     	width: 717px;
