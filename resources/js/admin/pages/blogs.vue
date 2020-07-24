@@ -5,8 +5,9 @@
 
 				<!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
 				<div class="_1adminOverveiw_table_recent _box_shadow _border_radious _mar_b30 _p20">
-					<p class="_title0">Blogs <Button @click="$router.push('/createBlog')" ><Icon type="md-add" /> Create Blogs</Button></p>
-
+					<p class="_title0">Blogs <Button @click="$router.push('/createBlog')" >
+                        <Icon type="md-add" /> Create Blogs</Button>
+                    </p>
 					<div class="_overflow _table_div">
 						<table class="_table">
 								<!-- TABLE TITLE -->
@@ -19,21 +20,22 @@
 								<th>Action</th>
 							</tr>
 								<!-- TABLE TITLE -->
-
-
 								<!-- ITEMS -->
 							<tr v-for="(blog, i) in blogs" :key="i" v-if="blogs.length">
 								<td>{{blog.id}}</td>
 								<td class="_table_name">{{blog.title}}</td>
-								<td> <span  v-for="(c, j) in blog.cat" v-if="blog.cat.length"><Tag type="border">{{c.categoryName}}</Tag></span> </td>
-								<td> <span v-for="(t, j) in blog.tag" v-if="blog.tag.length"><Tag type="border">{{t.tagName}}</Tag></span> </td>
+								<td> <span  v-for="(c, j) in blog.cat" v-if="blog.cat.length">
+                                    <Tag type="border">{{c.categoryName}}</Tag></span> </td>
+								<td> <span v-for="(t, j) in blog.tag" v-if="blog.tag.length">
+                                    <Tag type="border">{{t.tagName}}</Tag></span> </td>
 								<td> {{blog.views}}</td>
 
                                 <td>
 									<Button type="info" size="small" >Visit blog</Button>
-									<Button type="info" size="small" @click="$router.push(`/editblog/${blog.id}`)" v-if="isUpdatePermitted">Edit</Button>
-									<Button type="error" size="small" @click="showDeletingModal(blog, i)"  :loading="blog.isDeleting" v-if="isDeletePermitted">Delete</Button>
-
+									<Button type="info" size="small" @click="$router.push(`/editblog/${blog.id}`)" 
+                                            v-if="isUpdatePermitted">Edit</Button>
+									<Button type="error" size="small" @click="showDeletingModal(blog, i)"  
+                                        :loading="blog.isDeleting" v-if="isDeletePermitted">Delete</Button>
 								</td>
 							</tr>
 								<!-- ITEMS -->
@@ -41,12 +43,10 @@
 					</div>
 				</div>
                 <deleteModal></deleteModal>
-
 			</div>
 		</div>
     </div>
 </template>
-
 
 <script>
 import deleteModal from '../components/deleteModal.vue'
@@ -54,7 +54,6 @@ import { mapGetters } from 'vuex'
 export default {
 	data(){
 		return {
-
 			isAdding : false,
 			tags : [],
             index : -1,
@@ -63,8 +62,6 @@ export default {
 			deleteItem: {},
             deletingIndex: -1,
             blogs: [],
-
-
 		}
 	},
 
@@ -86,7 +83,6 @@ export default {
 			// this.deleteItem = tag
 			// this.deletingIndex = i
 			// this.showDeleteModal = true
-
 		}
 	},
 
@@ -111,9 +107,5 @@ export default {
 			}
 		}
 	}
-
-
-
-
 }
 </script>
