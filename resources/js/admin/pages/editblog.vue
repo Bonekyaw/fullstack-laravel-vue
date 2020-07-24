@@ -21,7 +21,6 @@
 								:config="config"
 							/>
 
-
 					</div>
 					<div class="_input_field">
 						 <Input  type="textarea" v-model="data.post_excerpt" :rows="4" placeholder="Post excerpt " />
@@ -39,23 +38,15 @@
 					<div class="_input_field">
 						 <Input  type="textarea" v-model="data.metaDescription" :rows="4" placeholder="Meta description" />
 					 </div>
-
-
 					 <div class="_input_field">
-						 <Button @click="save" :loading="isCreating" :disabled="isCreating">{{isCreating ? 'Please wait...' : 'Update blog'}}</Button>
+						 <Button @click="save" :loading="isCreating" :disabled="isCreating">
+                                {{isCreating ? 'Please wait...' : 'Update blog'}}</Button>
 					 </div>
-
 				</div>
-
-
-
-
-
 			</div>
 		</div>
     </div>
 </template>
-
 
 <script>
 
@@ -74,21 +65,15 @@ export default {
 				category_id : [],
 				tag_id : [],
 				jsonData: null
-
 			},
 			articleHTML: '',
 			category : [],
 			tag : [],
 			isCreating: false,
-
-
 		}
 	},
 
 	methods : {
-
-
-
         async onSave(response){
             var data = response
 			await this.outputHtml(data.blocks)
@@ -100,8 +85,6 @@ export default {
             if(this.data.metaDescription.trim()=='') return this.e('Meta description is required')
             if(!this.data.tag_id.length) return this.e('Tag is required')
             if(!this.data.category_id.length) return this.e('Category is required')
-
-
 
 			this.isCreating = true
 			const res = await this.callApi('post', `/app/update_blog/${this.$route.params.id}`, this.data)
@@ -117,7 +100,6 @@ export default {
                 }else{
                     this.swr()
                 }
-
 			}
 			this.isCreating = false
         },
@@ -163,8 +145,6 @@ export default {
 				case "embed":
 					this.articleHTML += this.makeEmbed(obj)
 					break;
-
-
 				case 'delimeter':
 					this.articleHTML += this.makeDelimeter(obj);
 					break;
@@ -179,7 +159,6 @@ export default {
         console.log(id)
         if(!id){
             return this.$router.push('/notfound')
-
         }
 		const [blog, cat, tag] = await Promise.all([
 			this.callApi('get', `/app/blog_single/${id}`),
@@ -188,7 +167,6 @@ export default {
 		])
 		if(blog.status==200){
             if(!blog.data) return this.$router.push('/notfound')
-
 
             console.log(JSON.parse(blog.data.jsonData))
             this.initData = JSON.parse(blog.data.jsonData)
@@ -206,22 +184,12 @@ export default {
             this.data.metaDescription = blog.data.metaDescription
             this.data.post_excerpt = blog.data.post_excerpt
 
-
 		}else{
 			this.swr()
 		}
-
 	}
-
-
-
-
-
-
-
 }
 </script>
-
 
 <style>
 	.blog_editor {
@@ -239,7 +207,6 @@ export default {
 	.blog_editor:hover {
 		border: 1px solid #57a3f3;
 	}
-
 	._input_field{
 		margin: 20px 0 20px 160px;
     	width: 717px;
