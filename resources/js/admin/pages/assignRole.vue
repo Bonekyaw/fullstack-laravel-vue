@@ -102,11 +102,7 @@ export default {
        }else{
          this.resources = JSON.parse(permission)
        }
-
      }
-
-
-
   },
 
   async created() {
