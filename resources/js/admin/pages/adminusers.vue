@@ -5,7 +5,8 @@
 				
 				<!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
 				<div class="_1adminOverveiw_table_recent _box_shadow _border_radious _mar_b30 _p20">
-					<p class="_title0">Tags <Button @click="addModal=true"><Icon type="md-add" /> Add admin</Button></p>
+					<p class="_title0">Tags <Button @click="addModal=true">
+                        <Icon type="md-add" /> Add admin</Button></p>
 
 					<div class="_overflow _table_div">
 						<table class="_table">
@@ -20,7 +21,6 @@
 							</tr>
 								<!-- TABLE TITLE -->
 
-
 								<!-- ITEMS -->
 							<tr v-for="(user, i) in users" :key="i" v-if="users.length">
 								<td>{{user.id}}</td>
@@ -29,8 +29,10 @@
 								<td class="">{{user.userType}}</td>
 								<td>{{user.created_at}}</td>
 								<td>
-									<Button type="info" size="small" @click="showEditModal(user, i)">Edit</Button>
-									<Button type="error" size="small" @click="showDeletingModal(user, i)"  :loading="user.isDeleting">Delete</Button>
+									<Button type="info" size="small" @click="showEditModal(user, i)">
+                                        Edit</Button>
+									<Button type="error" size="small" @click="showDeletingModal(user, i)"  
+                                        :loading="user.isDeleting">Delete</Button>
 									
 								</td>
 							</tr>
@@ -38,7 +40,6 @@
 					</table>
 					</div>
 				</div>
-
 
 				<!-- tag adding modal -->
 				<Modal
@@ -59,17 +60,16 @@
                     </div>
                     <div class="space">
                         <Select v-model="data.role_id"  placeholder="Select admin type">
-                            <Option :value="r.id" v-for="(r, i) in roles" :key="i" v-if="roles.length">{{r.roleName}}</Option>
+                            <Option :value="r.id" v-for="(r, i) in roles" :key="i" 
+                                v-if="roles.length">{{r.roleName}}</Option>
                             <!-- <Option value="Editor" >Editor</Option> -->
                         </Select>
-                    </div>
-					
-					
-					
+                    </div>					
 
 					<div slot="footer">
 						<Button type="default" @click="addModal=false">Close</Button>
-						<Button type="primary" @click="addAdmin" :disabled="isAdding" :loading="isAdding">{{isAdding ? 'Adding..' : 'Add admin'}}</Button>
+						<Button type="primary" @click="addAdmin" :disabled="isAdding" 
+                            :loading="isAdding">{{isAdding ? 'Adding..' : 'Add admin'}}</Button>
 					</div>
 
 				</Modal>
@@ -95,14 +95,12 @@
                             <Option value="Admin" >Admin</Option>
                             <Option value="Editor" >Editor</Option>
                         </Select>
-                    </div>
-                
-
-					
+                    </div>					
 
 					<div slot="footer">
 						<Button type="default" @click="editModal=false">Close</Button>
-						<Button type="primary" @click="editAdmin" :disabled="isAdding" :loading="isAdding">{{isAdding ? 'Editing..' : 'Edit Admin'}}</Button>
+						<Button type="primary" @click="editAdmin" :disabled="isAdding" 
+                            :loading="isAdding">{{isAdding ? 'Editing..' : 'Edit Admin'}}</Button>
 					</div>
 
 				</Modal>
@@ -117,7 +115,8 @@
 						
 					</div>
 					<div slot="footer">
-						<Button type="error" size="large" long :loading="isDeleing" :disabled="isDeleing" @click="deleteTag" >Delete</Button>
+						<Button type="error" size="large" long :loading="isDeleing"     
+                            :disabled="isDeleing" @click="deleteTag" >Delete</Button>
 					</div>
 				</Modal> -->
 				<deleteModal></deleteModal>
@@ -179,10 +178,8 @@ export default {
                     }
 				}else{
 					this.swr()
-				}
-				
+				}				
 			}
-
 		},
 		async editAdmin(){
 			if(this.editData.fullName.trim()=='') return this.e('Full name is required')
@@ -202,10 +199,8 @@ export default {
 					
 				}else{
 					this.swr()
-				}
-				
+				}				
 			}
-
 		},
 		showEditModal(user, index){
 			let obj = {
@@ -276,10 +271,6 @@ export default {
 				this.tags.splice(obj.deletingIndex,1)
 			}
 		}
-	}
-	
-
-
-	
+	}	
 }
 </script>
