@@ -17,7 +17,8 @@
             </div>
             <div slot="footer">
                 <Button type="default" size="large" @click="closeModal" >Close</Button>
-                <Button type="error" size="large"  :loading="isDeleing" :disabled="isDeleing" @click="deleteTag" >Delete</Button>
+                <Button type="error" size="large"  :loading="isDeleing" 
+                    :disabled="isDeleing" @click="deleteTag" >Delete</Button>
             </div>
         </Modal>
     </div>
@@ -49,13 +50,9 @@ export default {
             this.$store.commit('setDeleteModal', false)
         }
     },
-
-
-
     computed : {
         ...mapGetters(['getDeleteModalObj'])
     }
-
 }
 </script>
 
