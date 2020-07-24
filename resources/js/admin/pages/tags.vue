@@ -5,7 +5,8 @@
 				
 				<!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
 				<div class="_1adminOverveiw_table_recent _box_shadow _border_radious _mar_b30 _p20">
-					<p class="_title0">Tags <Button @click="addModal=true" v-if="isWritePermitted"><Icon type="md-add" /> Add tag</Button></p>
+					<p class="_title0">Tags <Button @click="addModal=true" v-if="isWritePermitted">
+                        <Icon type="md-add" /> Add tag</Button></p>
 
 					<div class="_overflow _table_div">
 						<table class="_table">
@@ -25,8 +26,10 @@
 								<td class="_table_name">{{tag.tagName}}</td>
 								<td>{{tag.created_at}}</td>
 								<td>
-									<Button type="info" size="small" @click="showEditModal(tag, i)" v-if="isUpdatePermitted">Edit</Button>
-									<Button type="error" size="small" @click="showDeletingModal(tag, i)"  :loading="tag.isDeleting" v-if="isDeletePermitted">Delete</Button>
+									<Button type="info" size="small" @click="showEditModal(tag, i)" 
+                                            v-if="isUpdatePermitted">Edit</Button>
+									<Button type="error" size="small" @click="showDeletingModal(tag, i)"  
+                                        :loading="tag.isDeleting" v-if="isDeletePermitted">Delete</Button>
 									
 								</td>
 							</tr>
@@ -48,7 +51,8 @@
 
 					<div slot="footer">
 						<Button type="default" @click="addModal=false">Close</Button>
-						<Button type="primary" @click="addTag" :disabled="isAdding" :loading="isAdding">{{isAdding ? 'Adding..' : 'Add tag'}}</Button>
+						<Button type="primary" @click="addTag" :disabled="isAdding" 
+                            :loading="isAdding">{{isAdding ? 'Adding..' : 'Add tag'}}</Button>
 					</div>
 
 				</Modal>
@@ -64,7 +68,8 @@
 
 					<div slot="footer">
 						<Button type="default" @click="editModal=false">Close</Button>
-						<Button type="primary" @click="editTag" :disabled="isAdding" :loading="isAdding">{{isAdding ? 'Editing..' : 'Edit tag'}}</Button>
+						<Button type="primary" @click="editTag" :disabled="isAdding" 
+                            :loading="isAdding">{{isAdding ? 'Editing..' : 'Edit tag'}}</Button>
 					</div>
 
 				</Modal>
@@ -79,7 +84,8 @@
 						
 					</div>
 					<div slot="footer">
-						<Button type="error" size="large" long :loading="isDeleing" :disabled="isDeleing" @click="deleteTag" >Delete</Button>
+						<Button type="error" size="large" long :loading="isDeleing" 
+                            :disabled="isDeleing" @click="deleteTag" >Delete</Button>
 					</div>
 				</Modal> -->
 				<deleteModal></deleteModal>
